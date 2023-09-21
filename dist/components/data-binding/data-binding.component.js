@@ -10,10 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DataBindingComponent = void 0;
-const main_1 = require("../../main");
 let DataBindingComponent = class DataBindingComponent {
     constructor() {
         this.data = "";
+        this.setupBindings();
     }
     setupBindings() {
         const inputElement = document.getElementById("dataInput");
@@ -35,7 +35,7 @@ let DataBindingComponent = class DataBindingComponent {
 };
 exports.DataBindingComponent = DataBindingComponent;
 exports.DataBindingComponent = DataBindingComponent = __decorate([
-    (0, main_1.Component)({
+    Component({
         template: `
     <h1>Two-way Binding Example</h1>
     <input id="dataInput" type="text"/>
