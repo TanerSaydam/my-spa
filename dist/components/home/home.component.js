@@ -7,11 +7,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HomeComponent = void 0;
+const decorators_1 = require("../../decorators");
 let HomeComponent = class HomeComponent {
 };
 exports.HomeComponent = HomeComponent;
 exports.HomeComponent = HomeComponent = __decorate([
-    Component({
+    (0, decorators_1.Component)({
         templateUrl: './home.component.html'
     })
 ], HomeComponent);
