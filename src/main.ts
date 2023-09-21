@@ -1,18 +1,30 @@
 interface ComponentOptions{
-    template: string;
+    template?: string;
+    templateUrl?: string;
 }
 
-function Component(options: ComponentOptions){
-    return function (constructor: any){
-        constructor.prototype.template = options.template;
+function Component(options: ComponentOptions) {
+    return function (constructor: any) {
+      constructor.prototype.template = options.template;
+      constructor.prototype.templateUrl = options.templateUrl;
     };
-}
+  }
+
+async function fetchTemplate(url: string): Promise<string> {
+    const response = await fetch(url);
+    const text = await response.text();
+    return text;
+}  
 
 class Router {
-    static navigate(component: any){
+    static async navigate(component: any){
         const appRoot = document.getElementById("app");
-        if(appRoot){
-            appRoot.innerHTML = new component().template;
+        if (appRoot) {
+            let template = new component().template;
+            if (new component().templateUrl) {
+              template = await fetchTemplate(new component().templateUrl);
+            }
+            appRoot.innerHTML = template;
         }
     }
 
@@ -26,28 +38,26 @@ class Router {
 @Component({
     template: `<h1>App Component</h1><button route="home">Go to Home</button>`
 })
-class AppComponent {
+class AppComponent {}
+  
+  @Component({
+    templateUrl: './components/home.component.html'
+  })
+  class HomeComponent {}
+  
 
-}
-
-@Component({
-    template: "<h1>Home Component</h1>"
-})
-class HomeComponent{
-
-}
-
-window.addEventListener("load", ()=> {
-    Router.navigate(AppComponent);
-
+  window.addEventListener("load", async () => {
+    await Router.navigate(AppComponent);
+  
     const routeElements = document.querySelectorAll("[route]");
-    routeElements.forEach((el)=> {
-        el.addEventListener("click", (e)=> {
-            const route = (e.currentTarget as HTMLElement).getAttribute("route");
-            if(route){
-                const component = Router.route(route);
-                Router.navigate(component);
-            }
-        })
-    })
-})
+    routeElements.forEach((el) => {
+      el.addEventListener("click", async (e) => {
+        const route = (e.currentTarget as HTMLElement).getAttribute("route");
+        if (route) {
+          const component = Router.route(route);
+          await Router.navigate(component);
+        }
+      });
+    });
+});
+  
