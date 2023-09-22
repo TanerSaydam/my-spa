@@ -1,4 +1,5 @@
-import { Component } from "../decorators";
+import { Component } from "../utils/decorators";
+import { traverseDOM } from "../utils/traverse";
 
 @Component({
     template: `
@@ -9,15 +10,31 @@ import { Component } from "../decorators";
     <h1>Two-way Binding Example</h1>
     <input id="dataInput" type="text"/>
     <button id="logButton">Log Data</button>
-
+    <ul>
+        <li myFor="item in items">
+            {{item}}
+        </li>
+        <li myFor="res in response">
+            {{res.title}}
+        </li>
+    </ul>
   `
 })
 
 export class DataBindingComponent {
     public data: string = "";
-
+    items: string[] = ["Deneme 1", "Deneme2", "Deneme 3"]
+    response: any[] = [
+        {
+            "userId": 1,
+            "id": 1,
+            "title": "delectus aut autem",
+            "completed": false
+            }
+    ];
     constructor() {
         this.setupBindings();
+        traverseDOM(document.body, this);
     }
 
     setupBindings() {

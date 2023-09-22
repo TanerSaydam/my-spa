@@ -1,4 +1,4 @@
-import { Component } from "../decorators";
+import { Component } from "../utils/decorators";
 
 @Component({
     templateUrl: "./test.component.html"

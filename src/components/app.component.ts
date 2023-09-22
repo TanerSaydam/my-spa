@@ -1,4 +1,4 @@
-import { Component } from "../decorators";
+import { Component } from "../utils/decorators";
 import { traverseDOM } from "../utils/traverse";
 
 @Component({
