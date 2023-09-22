@@ -1,10 +1,15 @@
-import { Component } from "../../decorators";
+import { Component } from "../decorators";
 
 @Component({
     template: `
+    <button route="/">Go to App</button>
+        <button route="home">Go to Home</button>
+        <button route="data-binding">Go to Data Binding</button>
+        <button route="test">Test</button>
     <h1>Two-way Binding Example</h1>
     <input id="dataInput" type="text"/>
     <button id="logButton">Log Data</button>
+
   `
 })
 

@@ -1,5 +1,5 @@
-import { Component } from "../../decorators";
-import { traverseDOM } from "../../utils/traverse";
+import { Component } from "../decorators";
+import { traverseDOM } from "../utils/traverse";
 
 @Component({
     templateUrl: './home.component.html'

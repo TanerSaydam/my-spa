@@ -1,7 +1,7 @@
-import { AppComponent } from "./components/app/app.component";
-import { DataBindingComponent } from "./components/data-binding/data-binding.component";
-import { HomeComponent } from "./components/home/home.component";
-import { TestComponent } from "./components/test/test.component";
+import { AppComponent } from "./components/app.component";
+import { DataBindingComponent } from "./components/data-binding.component";
+import { HomeComponent } from "./components/home.component";
+import { TestComponent } from "./components/test.component";
 
 
 async function fetchTemplate(url: string): Promise<string> {
@@ -22,12 +22,14 @@ class Router {
       new component();
       
       setEventListeners();
+      if(path !== "/")
       history.pushState({ path }, '', '/' + path);
     }
   }
 
   static route(path: string): any {
-    if (path == "home") return HomeComponent
+    if (path == "") return AppComponent
+    else if (path == "home") return HomeComponent
     else if (path == "data-binding") return DataBindingComponent
     else if (path == "test") return TestComponent
     return AppComponent;
