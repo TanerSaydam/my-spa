@@ -11,7 +11,7 @@ async function fetchTemplate(url: string): Promise<string> {
 }  
 
 class Router {
-    static async navigate(component: any){
+    static async navigate(component: any, path: string){
         const appRoot = document.getElementById("app");
         if (appRoot) {
             let template = new component().template;
@@ -20,6 +20,8 @@ class Router {
             }
             appRoot.innerHTML = template;
             new component();
+
+            history.pushState({}, '', '/' + path)
         }
     }
 
@@ -33,7 +35,10 @@ class Router {
   
 
   window.addEventListener("load", async () => {
-    await Router.navigate(AppComponent);
+    const initialPath = window.location.pathname.replace('/', '');
+    const initialComponent = Router.route(initialPath);
+
+    await Router.navigate(initialComponent,initialPath);
   
     const routeElements = document.querySelectorAll("[route]");
     routeElements.forEach((el) => {
@@ -41,7 +46,7 @@ class Router {
         const route = (e.currentTarget as HTMLElement).getAttribute("route");
         if (route) {
           const component = Router.route(route);
-          await Router.navigate(component);
+          await Router.navigate(component, route);
         }
       });
     });
