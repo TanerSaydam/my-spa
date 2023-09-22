@@ -1,8 +1,7 @@
 import { Router } from "./router";
 
 export const setEventListeners = () => {
-    const clickHandler = async (e: Event) => {
-      console.log(e);
+    const clickHandler = async (e: Event) => {      
       const route = (e.currentTarget as HTMLElement).getAttribute("route");
       if (route) {
         const component = Router.route(route);

@@ -1,4 +1,5 @@
 import { routeResolver } from "../routeResolver";
+import { originalElements } from "./directives";
 import { setEventListeners } from "./event-listener";
 import { fetchTemplate } from "./fetch-template";
 
@@ -11,13 +12,13 @@ export class Router {
           template = await fetchTemplate(new component().templateUrl);
         }
         appRoot.innerHTML = template;
-        new component();
-        
+        new component();        
         setEventListeners();        
       }
     }
   
     static route(path: string): any {
+        originalElements.clear();
         return routeResolver(path);
     }
   }

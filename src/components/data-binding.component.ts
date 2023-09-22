@@ -30,7 +30,13 @@ export class DataBindingComponent {
             "id": 1,
             "title": "delectus aut autem",
             "completed": false
-            }
+        },
+        {
+            "userId": 1,
+            "id": 1,
+            "title": "delectus aut autem",
+            "completed": false
+        }
     ];
     constructor() {
         this.setupBindings();
@@ -55,5 +61,15 @@ export class DataBindingComponent {
 
     logData() {
         console.log(this.data);
+        this.getTodos();
+    }
+
+    getTodos(){
+        fetch("https://jsonplaceholder.typicode.com/todos")
+        .then(res=> res.json())
+        .then(data=> {
+            this.response = data;
+            traverseDOM(document.body, this);
+        })
     }
 }
