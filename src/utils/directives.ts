@@ -7,7 +7,7 @@ export function processDirectives(element: Element, context: any) {
         // Taşıyıcı div oluştur.
         const container = document.createElement('div');
         container.setAttribute('myForContainer', '');
-
+        
         for (const item of list) {
             const newItem = element.cloneNode(true) as Element;
             newItem.removeAttribute('myFor');

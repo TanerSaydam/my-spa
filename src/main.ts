@@ -21,9 +21,7 @@ class Router {
       appRoot.innerHTML = template;
       new component();
       
-      setEventListeners();
-      if(path !== "/")
-      history.pushState({ path }, '', '/' + path);
+      setEventListeners();        
     }
   }
 
@@ -35,8 +33,6 @@ class Router {
     return AppComponent;
   }
 }
-
-
 
 const setEventListeners = () => {
   const clickHandler = async (e: Event) => {
@@ -70,9 +66,6 @@ window.addEventListener("load", async () => {
     }
   };
 });
-
-
-// Geri veya ileri düğmesi tıklandığında
 
 
 

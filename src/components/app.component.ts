@@ -8,7 +8,7 @@ import { traverseDOM } from "../utils/traverse";
         <button route="home">Go to Home</button>
         <button route="data-binding">Go to Data Binding</button>
         <button route="test">Test</button>
-        <ul id="myList">
+        <!-- <ul id="myList">
             <li myFor="item in items">
                 {{item}}
             </li>
@@ -16,7 +16,7 @@ import { traverseDOM } from "../utils/traverse";
         <p>asdasdasd</p>
         <p myFor="item in items">
             {{item}}
-        </p>
+        </p> -->
         <p> saasdasdasd</p>
         `
 })
