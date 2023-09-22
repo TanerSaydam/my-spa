@@ -1,6 +1,5 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/main.ts',
@@ -33,11 +32,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html', // kaynak dosyanın yolu
       filename: './index.html' // hedef dosya adı ve yolu (dist klasöründe)
-    }),
-    new CopyWebpackPlugin({
-      patterns: [
-        { from: 'src/**/*.html', to: '[name].[ext]' },
-      ],
     }),
   ],
 };
