@@ -27,7 +27,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html', // Güncellendi: index.html dosyanın yolu
-    }),
+      template: './src/index.html', // kaynak dosyanın yolu
+      filename: './index.html' // hedef dosya adı ve yolu (dist klasöründe)
+    })
   ],
 };
