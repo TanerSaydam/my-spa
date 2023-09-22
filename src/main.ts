@@ -34,6 +34,8 @@ class Router {
   }
 }
 
+
+
 const setEventListeners = () => {
   const clickHandler = async (e: Event) => {
     console.log(e);
