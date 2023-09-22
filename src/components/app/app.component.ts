@@ -5,6 +5,7 @@ import { Component } from "../../decorators";
         <h1>App Component</h1>
         <button route="home">Go to Home</button>
         <button route="data-binding">Go to Data Binding</button>
+        <button route="test">Test</button>
         `
 })
 export class AppComponent { }

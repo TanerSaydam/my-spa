@@ -1,6 +1,7 @@
 import { AppComponent } from "./components/app/app.component";
 import { DataBindingComponent } from "./components/data-binding/data-binding.component";
 import { HomeComponent } from "./components/home/home.component";
+import { TestComponent } from "./components/test/test.component";
 
 
 async function fetchTemplate(url: string): Promise<string> {
@@ -25,6 +26,7 @@ class Router {
     static route(path: string):any{
         if(path == "home") return HomeComponent
         else if(path == "data-binding") return DataBindingComponent
+        else if(path == "test") return TestComponent
         return AppComponent;
     }
 }  
